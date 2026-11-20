@@ -1,0 +1,109 @@
+{
+  "meta": {
+    "title": "Leandro Blandi · Backend Engineer",
+    "description": "Backend Engineer especializado en Java, Spring Framework y AWS. Basado en Buenos Aires, Argentina."
+  },
+  "a11y": {
+    "skip": "Saltar al contenido",
+    "theme": "Cambiar tema claro/oscuro",
+    "lang": "Cambiar idioma",
+    "menu": "Abrir menú de navegación",
+    "nav": "Navegación principal"
+  },
+  "nav": {
+    "about": "Sobre mí",
+    "experience": "Experiencia",
+    "education": "Educación",
+    "skills": "Skills",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "greeting": "Hola, soy",
+    "tagline": "Backend engineer construyendo servicios escalables con Java y Spring sobre AWS.",
+    "cv": "Descargar CV",
+    "contact": "Contactame",
+    "scroll": "Scroll"
+  },
+  "about": {
+    "label": "sobre mí",
+    "title": "Backend con foco en la nube",
+    "body": "Desarrollador Backend enfocado en el ecosistema Java y Spring Framework. Tengo experiencia diseñando y desarrollando soluciones back-end escalables e integrando servicios en la nube de AWS como S3, SQS, DynamoDB y Cognito.",
+    "facts": {
+      "location": "Ubicación",
+      "locationValue": "Buenos Aires, Argentina",
+      "company": "Actualmente",
+      "companyValue": "Backend Developer en Certant",
+      "languages": "Idiomas",
+      "languagesValue": "Español nativo · Inglés B2",
+      "gpa": "Promedio",
+      "gpaValue": "8 / 10"
+    }
+  },
+  "experience": {
+    "label": "experiencia",
+    "title": "Dónde trabajé",
+    "subtitle": "Microservicios, APIs y cloud en entornos productivos.",
+    "present": "Presente",
+    "items": {
+      "certant": {
+        "company": "Certant",
+        "role": "Backend Developer",
+        "meta": "Remoto · Full-time",
+        "description": "Análisis, desarrollo, implementación y soporte de aplicaciones web orientadas a microservicios desplegadas en AWS."
+      },
+      "internship": {
+        "company": "Pasantía",
+        "role": "Frontend Developer",
+        "meta": "Remoto · Freelance",
+        "description": "Formé parte de un equipo que diseñó y desarrolló una aplicación web completa, con Nest.js en el backend y Angular como cliente."
+      }
+    }
+  },
+  "education": {
+    "label": "educación",
+    "title": "Formación",
+    "degree": "Licenciatura en Sistemas",
+    "location": "Remedios de Escalada, Buenos Aires",
+    "status": "En curso",
+    "progress": "Año {{current}} de {{total}}",
+    "gpa": "Promedio",
+    "topicsTitle": "Lo que estudio",
+    "topics": {
+      "algorithms": "Algoritmos",
+      "dataStructures": "Estructuras de datos",
+      "oop": "Programación orientada a objetos",
+      "agile": "Metodologías ágiles"
+    }
+  },
+  "skills": {
+    "label": "skills",
+    "title": "Stack técnico",
+    "subtitle": "Las herramientas con las que construyo día a día.",
+    "groups": {
+      "aws": "Amazon Web Services",
+      "backend": "Backend",
+      "languages": "Lenguajes",
+      "databases": "Bases de datos",
+      "frontend": "Frontend"
+    },
+    "awsNote": "Integraciones con el AWS SDK, mensajería, almacenamiento, autenticación y serverless."
+  },
+  "contact": {
+    "label": "contacto",
+    "title": "¿Hablamos?",
+    "body": "Estoy abierto a nuevas oportunidades y proyectos backend. Escribime y te respondo a la brevedad.",
+    "email": "Enviar email",
+    "copy": "Copiar email",
+    "copied": "¡Copiado!",
+    "cv": "Descargar CV"
+  },
+  "footer": {
+    "built": "Hecho con Angular, Tailwind y GSAP."
+  },
+  "duration": {
+    "year": "{{n}} año",
+    "years": "{{n}} años",
+    "month": "{{n}} mes",
+    "months": "{{n}} meses"
+  }
+}
