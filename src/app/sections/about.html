@@ -1,0 +1,26 @@
+<section
+  *transloco="let t; prefix: 'about'"
+  id="about"
+  class="mx-auto max-w-6xl px-6 py-24 md:py-32"
+>
+  <app-section-heading index="01" [label]="t('label')" [title]="t('title')" />
+
+  <p
+    data-body
+    class="max-w-4xl text-2xl leading-snug font-medium tracking-tight md:text-4xl md:leading-tight"
+  >
+    @for (w of words(); track $index) {
+      <span data-w>{{ w }} </span>
+    }
+  </p>
+
+  <div data-facts class="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    @for (fact of facts; track fact.key) {
+      <app-glass-card data-fact class="p-6!">
+        <app-icon [name]="fact.icon" class="mb-4 size-6 text-accent-fg" />
+        <p class="mono-label text-muted! tracking-[0.15em]!">{{ t('facts.' + fact.key) }}</p>
+        <p class="mt-2 font-medium">{{ t('facts.' + fact.key + 'Value') }}</p>
+      </app-glass-card>
+    }
+  </div>
+</section>
