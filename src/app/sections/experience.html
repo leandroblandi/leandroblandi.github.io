@@ -1,0 +1,61 @@
+<section
+  *transloco="let t; prefix: 'experience'"
+  id="experience"
+  class="mx-auto max-w-6xl px-6 py-24 md:py-32"
+>
+  <app-section-heading
+    index="02"
+    [label]="t('label')"
+    [title]="t('title')"
+    [subtitle]="t('subtitle')"
+  />
+
+  <div data-timeline class="relative">
+    <div class="absolute top-0 bottom-0 left-[7px] w-px bg-line" aria-hidden="true">
+      <div data-line class="bg-brand size-full origin-top"></div>
+    </div>
+
+    <ol>
+      @for (job of items(); track job.id) {
+        <li class="relative pb-10 pl-10 last:pb-0 md:pl-14">
+          <span
+            data-dot
+            class="bg-brand absolute top-9 left-0 size-[15px] rounded-full ring-4 ring-bg"
+            [class.shadow-glow]="job.current"
+            aria-hidden="true"
+          ></span>
+
+          <app-glass-card data-job>
+            <div class="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+              <div>
+                <h3 class="text-h3 font-semibold">{{ t('items.' + job.id + '.role') }}</h3>
+                <p class="mt-1 text-muted">
+                  <span class="font-medium text-accent-fg">{{
+                    t('items.' + job.id + '.company')
+                  }}</span>
+                  · {{ t('items.' + job.id + '.meta') }}
+                </p>
+              </div>
+              <div class="font-mono text-sm md:text-right">
+                <p class="text-fg">{{ job.range }}</p>
+                <p class="mt-1 text-muted">{{ job.duration }}</p>
+              </div>
+            </div>
+
+            <p class="mt-5 max-w-3xl leading-relaxed text-muted">
+              {{ t('items.' + job.id + '.description') }}
+            </p>
+
+            <ul class="mt-6 flex flex-wrap gap-2">
+              @for (tech of job.stack; track tech) {
+                <li>
+                  <app-chip>{{ tech }}</app-chip>
+                </li>
+              }
+            </ul>
+          </app-glass-card>
+        </li>
+      }
+    </ol>
+  </div>
+</section>
