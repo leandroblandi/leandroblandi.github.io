@@ -1,13 +1,27 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Portfolio</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <title>Leandro Blandi · Backend Engineer</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="author" content="Leandro Blandi" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <script>
+      (function () {
+        var d = document.documentElement;
+        d.classList.add('js');
+        try {
+          if (localStorage.getItem('theme') === 'light') {
+            d.classList.remove('dark');
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fafaf9');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
 </html>
