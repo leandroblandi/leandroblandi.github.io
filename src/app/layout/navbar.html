@@ -1,0 +1,82 @@
+<ng-container *transloco="let t">
+  <a
+    [href]="href('main')"
+    class="sr-only z-[60] rounded-full bg-accent px-4 py-2 text-black focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
+    >{{ t('a11y.skip') }}</a
+  >
+
+  <header class="fixed inset-x-0 top-0 z-50 px-4 pt-3 md:pt-4">
+    <nav
+      class="mx-auto flex h-14 max-w-6xl items-center justify-between rounded-full px-3 pl-5 transition-all duration-500 ease-out-expo"
+      [class]="
+        scrolled() || open() ? 'glass shadow-lg shadow-black/10' : 'border border-transparent'
+      "
+      [attr.aria-label]="t('a11y.nav')"
+    >
+      <a
+        [href]="href('home')"
+        class="grid font-mono text-lg font-semibold tracking-tight"
+        aria-label="Leandro Blandi"
+      >
+        <span
+          class="col-start-1 row-start-1 transition-all duration-500 ease-out-expo"
+          [class]="scrolled() ? '-translate-y-2 opacity-0' : 'opacity-100'"
+          aria-hidden="true"
+          >LB<span class="text-gradient">.</span></span
+        >
+        <span
+          class="col-start-1 row-start-1 transition-all duration-500 ease-out-expo"
+          [class]="scrolled() ? 'opacity-100' : 'translate-y-2 opacity-0'"
+          aria-hidden="true"
+          ><span class="text-gradient">&#64;</span>LBlandi</span
+        >
+      </a>
+
+      <ul class="hidden items-center gap-1 md:flex">
+        @for (id of sections; track id) {
+          <li>
+            <a
+              [href]="href(id)"
+              class="relative rounded-full px-4 py-2 text-sm transition-colors"
+              [class]="
+                spy.active() === id ? 'bg-surface-strong text-fg' : 'text-muted hover:text-fg'
+              "
+              [attr.aria-current]="spy.active() === id ? 'location' : null"
+              >{{ t('nav.' + id) }}</a
+            >
+          </li>
+        }
+      </ul>
+
+      <div class="flex items-center gap-1">
+        <app-lang-switcher [lang]="lang()" />
+        <app-theme-toggle />
+        <button
+          type="button"
+          class="grid size-10 cursor-pointer place-items-center rounded-full text-muted hover:bg-surface hover:text-fg md:hidden"
+          [attr.aria-label]="t('a11y.menu')"
+          [attr.aria-expanded]="open()"
+          aria-controls="mobile-menu"
+          (click)="open.set(!open())"
+        >
+          <app-icon [name]="open() ? 'close' : 'menu'" class="size-5" />
+        </button>
+      </div>
+    </nav>
+
+    @if (open()) {
+      <ul id="mobile-menu" class="glass mx-auto mt-2 max-w-6xl rounded-3xl p-2 md:hidden">
+        @for (id of sections; track id) {
+          <li>
+            <a
+              [href]="href(id)"
+              class="block rounded-2xl px-4 py-3 text-muted hover:bg-surface-strong hover:text-fg"
+              (click)="open.set(false)"
+              >{{ t('nav.' + id) }}</a
+            >
+          </li>
+        }
+      </ul>
+    }
+  </header>
+</ng-container>
