@@ -1,0 +1,43 @@
+<section
+  *transloco="let t; prefix: 'skills'"
+  id="skills"
+  class="mx-auto max-w-6xl px-6 py-24 md:py-32"
+>
+  <app-section-heading
+    index="04"
+    [label]="t('label')"
+    [title]="t('title')"
+    [subtitle]="t('subtitle')"
+  />
+
+  <div class="grid gap-4 md:grid-cols-3">
+    @for (group of groups; track group.id) {
+      <app-glass-card data-cell [class]="group.layout" [class.overflow-hidden]="group.featured">
+        @if (group.featured) {
+          <div
+            class="pointer-events-none absolute -bottom-32 -left-20 -z-10 size-96 rounded-full bg-accent/25 blur-3xl"
+            aria-hidden="true"
+          ></div>
+        }
+        <div class="flex items-baseline justify-between gap-4">
+          <h3 class="font-semibold" [class]="group.featured ? 'text-h3' : 'text-lg'">
+            {{ t('groups.' + group.id) }}
+          </h3>
+          <span class="font-mono text-xs text-muted">{{ group.items.length }}</span>
+        </div>
+        @if (group.featured) {
+          <p class="mt-2 max-w-md text-muted">{{ t('awsNote') }}</p>
+        }
+        <ul class="flex flex-wrap gap-2" [class]="group.featured ? 'mt-8' : 'mt-5'">
+          @for (skill of group.items; track skill) {
+            <li data-skill>
+              <app-chip [class]="group.featured ? 'px-4! py-2! text-sm!' : ''">{{
+                skill
+              }}</app-chip>
+            </li>
+          }
+        </ul>
+      </app-glass-card>
+    }
+  </div>
+</section>
