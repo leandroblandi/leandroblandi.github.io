@@ -1,24 +1,27 @@
 <section
   *transloco="let t; prefix: 'contact'"
   id="contact"
-  class="mx-auto max-w-6xl px-6 py-24 md:py-32"
+  class="dark mx-auto max-w-6xl px-6 py-24 text-fg md:py-32"
 >
   <div
     data-panel
     appSpotlight
-    class="glass relative overflow-hidden rounded-[2rem] px-6 py-16 text-center [--spotlight-size:600px] md:px-16 md:py-24"
+    class="relative overflow-hidden rounded-[2rem] border border-line bg-[#141414] px-6 py-16 text-center shadow-2xl shadow-black/40 [--spotlight-size:600px] [--spotlight:rgb(255_255_255/0.05)] md:px-16 md:py-24"
   >
-    <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
-      <div
-        data-orb
-        class="absolute top-1/2 left-1/2 size-[48rem] -translate-1/2 rounded-full opacity-30 blur-3xl [background:conic-gradient(from_0deg,#f97316,#f59e0b,#ea580c,#7c2d12,#f97316)]"
-      ></div>
-      <div class="grid-bg absolute inset-0"></div>
-    </div>
+    <div
+      class="grid-bg pointer-events-none absolute inset-0 -z-10 opacity-60"
+      aria-hidden="true"
+    ></div>
 
     <p data-cta class="mono-label mb-6">// 05 · {{ t('label') }}</p>
     <h2 data-cta class="text-display font-bold tracking-tighter">
-      <span class="text-gradient">{{ t('title') }}</span>
+      @for (token of titleTokens(); track $index) {
+        @if (token.space) {
+          {{ ' ' }}
+        } @else {
+          <span [class.text-gradient]="token.highlight">{{ token.text }}</span>
+        }
+      }
     </h2>
     <p data-cta class="mx-auto mt-6 max-w-xl text-lg text-muted">{{ t('body') }}</p>
 

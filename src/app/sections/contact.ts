@@ -3,10 +3,12 @@ import {
   Component,
   DestroyRef,
   inject,
+  computed,
   input,
   signal,
 } from '@angular/core';
-import { TranslocoDirective } from '@jsverse/transloco';
+import { TranslocoDirective, translateSignal } from '@jsverse/transloco';
+import { highlightTokens } from '../core/highlight';
 import { gsap, injectMotion } from '../core/motion';
 import { Lang, SITE } from '../data/profile';
 import { Button } from '../shared/ui/button';
@@ -23,11 +25,13 @@ export class Contact {
   readonly lang = input.required<Lang>();
   protected readonly site = SITE;
   protected readonly copied = signal(false);
+  private readonly title = translateSignal('contact.title');
+  protected readonly titleTokens = computed(() => highlightTokens(this.title()));
   private timer?: ReturnType<typeof setTimeout>;
 
   constructor() {
     inject(DestroyRef).onDestroy(() => clearTimeout(this.timer));
-    injectMotion((root) => {
+    injectMotion(() => {
       gsap
         .timeline({ scrollTrigger: { trigger: '[data-panel]', start: 'top 80%' } })
         .from('[data-panel]', { scale: 0.92, opacity: 0, duration: 1.2, ease: 'expo.out' })
@@ -36,13 +40,6 @@ export class Contact {
           { y: 30, opacity: 0, stagger: 0.08, duration: 0.8, ease: 'power3.out' },
           '-=0.8',
         );
-      gsap.to('[data-orb]', {
-        rotate: 360,
-        duration: 30,
-        repeat: -1,
-        ease: 'none',
-        scrollTrigger: { trigger: root, toggleActions: 'play pause resume pause' },
-      });
     });
   }
 

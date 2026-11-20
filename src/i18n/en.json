@@ -27,7 +27,7 @@
   "about": {
     "label": "about",
     "title": "Backend with a cloud focus",
-    "body": "Backend developer focused on the Java and Spring Framework ecosystem. I have experience designing and building scalable back-end solutions and integrating AWS cloud services such as S3, SQS, DynamoDB and Cognito.",
+    "body": "*Backend* developer focused on the *Java* and *Spring Framework* ecosystem. I have experience designing and building *scalable back-end* solutions and integrating *AWS* cloud services such as S3, SQS, DynamoDB and Cognito.",
     "facts": {
       "location": "Location",
       "locationValue": "Buenos Aires, Argentina",
@@ -90,7 +90,7 @@
   },
   "contact": {
     "label": "contact",
-    "title": "Let's talk",
+    "title": "Let's *talk*",
     "body": "I'm open to new opportunities and backend projects. Drop me a line and I'll get back to you soon.",
     "email": "Send email",
     "copy": "Copy email",

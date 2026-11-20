@@ -12,7 +12,12 @@
 
   <div class="grid gap-4 md:grid-cols-3">
     @for (group of groups; track group.id) {
-      <app-glass-card data-cell [class]="group.layout" [class.overflow-hidden]="group.featured">
+      <app-glass-card
+        data-cell
+        [appTilt]="group.featured ? 4 : 8"
+        [class]="group.layout"
+        [class.overflow-hidden]="group.featured"
+      >
         @if (group.featured) {
           <div
             class="pointer-events-none absolute -bottom-32 -left-20 -z-10 size-96 rounded-full bg-accent/25 blur-3xl"

@@ -1,21 +1,23 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { TranslocoDirective, translateSignal } from '@jsverse/transloco';
+import { highlightTokens } from '../core/highlight';
 import { gsap, injectMotion, revealHeading } from '../core/motion';
 import { Lang } from '../data/profile';
 import { GlassCard } from '../shared/ui/glass-card';
 import { Icon, IconName } from '../shared/ui/icon';
 import { SectionHeading } from '../shared/ui/section-heading';
+import { Tilt } from '../shared/ui/tilt';
 
 @Component({
   selector: 'app-about',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TranslocoDirective, GlassCard, Icon, SectionHeading],
+  imports: [TranslocoDirective, GlassCard, Icon, SectionHeading, Tilt],
   templateUrl: './about.html',
 })
 export class About {
   readonly lang = input.required<Lang>();
   private readonly body = translateSignal('about.body');
-  protected readonly words = computed(() => this.body().split(' '));
+  protected readonly tokens = computed(() => highlightTokens(this.body()));
   protected readonly facts: { key: string; icon: IconName }[] = [
     { key: 'location', icon: 'map-pin' },
     { key: 'company', icon: 'briefcase' },
@@ -51,7 +53,7 @@ export class About {
           scrollTrigger: { trigger: root.querySelector('[data-facts]'), start: 'top 85%' },
         });
       },
-      () => this.words(),
+      () => this.tokens(),
     );
   }
 }

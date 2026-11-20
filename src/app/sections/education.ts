@@ -6,11 +6,12 @@ import { Chip } from '../shared/ui/chip';
 import { GlassCard } from '../shared/ui/glass-card';
 import { Icon } from '../shared/ui/icon';
 import { SectionHeading } from '../shared/ui/section-heading';
+import { Tilt } from '../shared/ui/tilt';
 
 @Component({
   selector: 'app-education',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TranslocoDirective, Chip, GlassCard, Icon, SectionHeading],
+  imports: [TranslocoDirective, Chip, GlassCard, Icon, SectionHeading, Tilt],
   templateUrl: './education.html',
 })
 export class Education {

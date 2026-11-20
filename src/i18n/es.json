@@ -27,7 +27,7 @@
   "about": {
     "label": "sobre mí",
     "title": "Backend con foco en la nube",
-    "body": "Desarrollador Backend enfocado en el ecosistema Java y Spring Framework. Tengo experiencia diseñando y desarrollando soluciones back-end escalables e integrando servicios en la nube de AWS como S3, SQS, DynamoDB y Cognito.",
+    "body": "Desarrollador *Backend* enfocado en el ecosistema *Java* y *Spring Framework*. Tengo experiencia diseñando y desarrollando soluciones *back-end escalables* e integrando servicios en la nube de *AWS* como S3, SQS, DynamoDB y Cognito.",
     "facts": {
       "location": "Ubicación",
       "locationValue": "Buenos Aires, Argentina",
@@ -90,7 +90,7 @@
   },
   "contact": {
     "label": "contacto",
-    "title": "¿Hablamos?",
+    "title": "*¿*Hablamos*?*",
     "body": "Estoy abierto a nuevas oportunidades y proyectos backend. Escribime y te respondo a la brevedad.",
     "email": "Enviar email",
     "copy": "Copiar email",

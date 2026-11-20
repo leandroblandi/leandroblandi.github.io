@@ -1,26 +1,37 @@
 <section
   *transloco="let t; prefix: 'about'"
   id="about"
-  class="mx-auto max-w-6xl px-6 py-24 md:py-32"
+  class="dark relative isolate overflow-hidden bg-linear-to-b from-bg via-[#141414] to-bg text-fg"
 >
-  <app-section-heading index="01" [label]="t('label')" [title]="t('title')" />
+  <div
+    class="circle-pattern pointer-events-none absolute inset-0 -z-10 [mask-image:linear-gradient(to_bottom,transparent_15%,rgb(0_0_0/0.2)_50%,black_75%,black_calc(100%-13rem),rgb(0_0_0/0.2)_calc(100%-5rem),transparent)]"
+    aria-hidden="true"
+  ></div>
 
-  <p
-    data-body
-    class="max-w-4xl text-2xl leading-snug font-medium tracking-tight md:text-4xl md:leading-tight"
-  >
-    @for (w of words(); track $index) {
-      <span data-w>{{ w }} </span>
-    }
-  </p>
+  <div class="mx-auto max-w-6xl px-6 pt-24 pb-40 md:pt-32 md:pb-48">
+    <app-section-heading index="01" [label]="t('label')" [title]="t('title')" />
 
-  <div data-facts class="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-    @for (fact of facts; track fact.key) {
-      <app-glass-card data-fact class="p-6!">
-        <app-icon [name]="fact.icon" class="mb-4 size-6 text-accent-fg" />
-        <p class="mono-label text-muted! tracking-[0.15em]!">{{ t('facts.' + fact.key) }}</p>
-        <p class="mt-2 font-medium">{{ t('facts.' + fact.key + 'Value') }}</p>
-      </app-glass-card>
-    }
+    <p
+      data-body
+      class="max-w-4xl text-2xl leading-snug font-medium tracking-tight md:text-4xl md:leading-tight"
+    >
+      @for (token of tokens(); track $index) {
+        @if (token.space) {
+          {{ ' ' }}
+        } @else {
+          <span data-w [class.text-gradient]="token.highlight">{{ token.text }}</span>
+        }
+      }
+    </p>
+
+    <div data-facts class="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      @for (fact of facts; track fact.key) {
+        <app-glass-card data-fact appTilt class="p-6! shadow-lg shadow-black/10">
+          <app-icon [name]="fact.icon" class="mb-4 size-6 text-accent-fg" />
+          <p class="mono-label text-fg/70! tracking-[0.15em]!">{{ t('facts.' + fact.key) }}</p>
+          <p class="mt-2 font-medium">{{ t('facts.' + fact.key + 'Value') }}</p>
+        </app-glass-card>
+      }
+    </div>
   </div>
 </section>

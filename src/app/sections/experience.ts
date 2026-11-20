@@ -6,11 +6,12 @@ import { EXPERIENCE, Lang } from '../data/profile';
 import { Chip } from '../shared/ui/chip';
 import { GlassCard } from '../shared/ui/glass-card';
 import { SectionHeading } from '../shared/ui/section-heading';
+import { Tilt } from '../shared/ui/tilt';
 
 @Component({
   selector: 'app-experience',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TranslocoDirective, Chip, GlassCard, SectionHeading],
+  imports: [TranslocoDirective, Chip, GlassCard, SectionHeading, Tilt],
   templateUrl: './experience.html',
 })
 export class Experience {

@@ -6,8 +6,7 @@ import { Spotlight } from './spotlight';
   changeDetection: ChangeDetectionStrategy.OnPush,
   hostDirectives: [Spotlight],
   host: {
-    class:
-      'glass gradient-border block rounded-2xl p-6 transition-transform duration-500 ease-out-expo hover:-translate-y-1 md:p-8',
+    class: 'glass gradient-border block rounded-2xl p-6 md:p-8',
   },
   template: '<ng-content />',
 })
