@@ -9,7 +9,7 @@ export class SeoService {
   private readonly meta = inject(Meta);
 
   update(lang: Lang, title: string, description: string) {
-    const url = `${SITE.url}/${lang}`;
+    const url = `${SITE.url}/${lang}/`;
     this.document.documentElement.lang = lang;
     this.title.setTitle(title);
     const tags: Record<string, string> = {
@@ -29,8 +29,8 @@ export class SeoService {
       this.meta.updateTag({ [attr]: key, content }, `${attr}="${key}"`);
     }
     this.setLink('canonical', url);
-    for (const alt of LANGS) this.setLink('alternate', `${SITE.url}/${alt}`, alt);
-    this.setLink('alternate', `${SITE.url}/es`, 'x-default');
+    for (const alt of LANGS) this.setLink('alternate', `${SITE.url}/${alt}/`, alt);
+    this.setLink('alternate', `${SITE.url}/es/`, 'x-default');
   }
 
   private setLink(rel: string, href: string, hreflang?: string) {

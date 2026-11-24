@@ -38,6 +38,6 @@ export class Navbar {
   }
 
   protected href(id: string) {
-    return `/${this.lang()}#${id}`;
+    return `/${this.lang()}/#${id}`;
   }
 }

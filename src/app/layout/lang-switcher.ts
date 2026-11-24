@@ -1,12 +1,11 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { LANGS, Lang } from '../data/profile';
 
 @Component({
   selector: 'app-lang-switcher',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, TranslocoDirective],
+  imports: [TranslocoDirective],
   template: `
     <div
       *transloco="let t"
@@ -16,7 +15,7 @@ import { LANGS, Lang } from '../data/profile';
     >
       @for (l of langs; track l) {
         <a
-          [routerLink]="['/', l]"
+          [href]="'/' + l + '/'"
           [attr.hreflang]="l"
           [attr.lang]="l"
           [attr.aria-current]="l === lang() ? 'true' : null"

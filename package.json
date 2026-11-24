@@ -9,8 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "format": "prettier --write \"src/**/*.{ts,html,css,json}\"",
-    "deploy": "node scripts/deploy.mjs",
-    "preview": "node scripts/preview.mjs"
+    "preview": "npm run build:pages && node scripts/preview.mjs",
+    "build:pages": "ng build && node scripts/pages.mjs"
   },
   "private": true,
   "packageManager": "npm@10.9.9",

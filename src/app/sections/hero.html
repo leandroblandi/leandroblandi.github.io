@@ -57,7 +57,7 @@
         <app-icon name="download" />
         {{ t('hero.cv') }}
       </a>
-      <a appButton="secondary" [href]="'/' + lang() + '#contact'">
+      <a appButton="secondary" [href]="'/' + lang() + '/#contact'">
         {{ t('hero.contact') }}
         <app-icon name="arrow-right" />
       </a>
@@ -70,7 +70,7 @@
 
   <a
     data-reveal
-    [href]="'/' + lang() + '#about'"
+    [href]="'/' + lang() + '/#about'"
     class="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 font-mono text-xs tracking-[0.3em] text-muted uppercase hover:text-fg"
   >
     {{ t('hero.scroll') }}

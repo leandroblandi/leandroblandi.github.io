@@ -1,4 +1,5 @@
-// Sirve dist/ con las mismas reglas que la CloudFront Function (infra/cloudfront-function.js).
+// Sirve dist/ con las mismas reglas que GitHub Pages: /es -> 301 /es/, carpetas -> index.html,
+// rutas inexistentes -> 404.html. Correr después de `npm run build:pages`.
 import { createReadStream, existsSync, statSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { extname, join, normalize } from 'node:path';
@@ -18,16 +19,18 @@ const types = {
 
 createServer((req, res) => {
   const url = new URL(req.url, 'http://localhost');
-  if (url.pathname === '/') {
-    const lang = /^en/i.test(req.headers['accept-language'] ?? '') ? 'en' : 'es';
-    res.writeHead(302, { location: `/${lang}` }).end();
-    return;
-  }
   let path = normalize(join(root, decodeURIComponent(url.pathname)));
   if (!path.startsWith(root)) return res.writeHead(403).end();
-  if (existsSync(path) && statSync(path).isDirectory()) path = join(path, 'index.html');
+  if (existsSync(path) && statSync(path).isDirectory()) {
+    if (!url.pathname.endsWith('/')) {
+      return res.writeHead(301, { location: `${url.pathname}/${url.search}` }).end();
+    }
+    path = join(path, 'index.html');
+  }
   const found = existsSync(path);
-  if (!found) path = join(root, 'index.csr.html');
-  res.writeHead(found ? 200 : 404, { 'content-type': types[extname(path)] ?? 'application/octet-stream' });
+  if (!found) path = join(root, '404.html');
+  res.writeHead(found ? 200 : 404, {
+    'content-type': types[extname(path)] ?? 'application/octet-stream',
+  });
   createReadStream(path).pipe(res);
 }).listen(port, () => console.log(`Preview: http://localhost:${port}`));
